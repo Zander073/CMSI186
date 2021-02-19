@@ -1,15 +1,22 @@
+import java.util.*;
+
 public class HighRollerGame {
 
     public static void main(String[] args) {
-        var console = System.console();
+
         DiceSet diceSet = null;
         var highest = 0;
         System.out.println("Welcome " + Die.SIX_SIDED_DIE_EMOJI.repeat(5));
+
         while (true) {
             System.out.println();
             try {
-                var command = console.readLine("Enter a command (h for help): ").trim();
-                if (command.matches("h(elp)?")) {
+                
+                Scanner object = new Scanner(System.in);
+                System.out.println("Enter a command (h for help): ");
+                String command = object.nextLine();
+
+                if (command.equals("h")) {
                     showHelp();
                 } else if (command.matches("q(uit)?")) {
                     System.out.println("I'm glad you played today. You look great!");

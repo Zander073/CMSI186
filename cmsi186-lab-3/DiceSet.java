@@ -2,21 +2,20 @@ import java.util.*;
 
 public class DiceSet {
 
-    //Global variables
-    private Die[] dice;
-    private final int sidesOnEachDieG;
-    private int numberOfDiceG;
+    Die[] dice;
+    int sidesOnEachDie;
+    int numberOfDice;
 
     //Constructor takes in arbitrary number of die sides and die
     public DiceSet(int sidesOnEachDie, int numberOfDice) {
-        if(numberOfDice < 2){
-          throw new IllegalArgumentException("At least two dice required");
-        }
         if(sidesOnEachDie < 4){
           throw new IllegalArgumentException("Dice must have at least four sides");
         }
-        sidesOnEachDieG = sidesOnEachDie;
-        numberOfDiceG = numberOfDice;
+        if(numberOfDice < 2){
+          throw new IllegalArgumentException("At least two dice required");
+        }
+        this.sidesOnEachDie = sidesOnEachDie;
+        this.numberOfDice = numberOfDice;
         this.dice = new Die[numberOfDice];
         for(int i = 0; i < dice.length; i++){
           this.dice[i] = new Die(sidesOnEachDie, 1);
@@ -31,8 +30,8 @@ public class DiceSet {
         if(sidesOnEachDie < 4){
           throw new IllegalArgumentException("Dice must have at least four sides");
         }
-        sidesOnEachDieG = sidesOnEachDie;
-        numberOfDiceG = values.length;
+        this.sidesOnEachDie = sidesOnEachDie;
+        this.numberOfDice = values.length;
         this.dice = new Die[values.length];
         for(int i = 0; i < values.length; i++){
           if(values[i] > sidesOnEachDie){
@@ -85,10 +84,10 @@ public class DiceSet {
      */
     public ArrayList<Integer> values() {
         // TODO
-        if(numberOfDiceG < 2){
+        if(numberOfDice < 2){
           throw new IllegalArgumentException("At least two dice required");
         }
-        if(sidesOnEachDieG < 4){
+        if(sidesOnEachDie < 4){
           throw new IllegalArgumentException("Dice must have at least four sides");
         }
         ArrayList<Integer> list = new ArrayList<Integer>();
